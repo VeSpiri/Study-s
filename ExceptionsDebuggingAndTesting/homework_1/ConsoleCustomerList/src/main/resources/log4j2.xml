@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <appenders>
+        <File name="queries" fileName="logs/queries.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n"/>
+            <Filters>
+                <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </File>
+        <File name="errors" fileName="logs/errors.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n"/>
+            <Filters>
+                <ThresholdFilter Level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </File>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </appenders>
+
+    <loggers>
+        <root level="INFO">
+            <AppenderRef ref="queries"/>
+            <AppenderRef ref="errors"/>
+        </root>
+    </loggers>
+
+</configuration>
